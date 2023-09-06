@@ -27,27 +27,21 @@ double getCPUUsage() {
     return usage;
 }
 
-//TODO fixme: uncorrect time
 timeData getUpTime() {
-    using namespace std::chrono;
-
     std::ifstream uptimeFile("/proc/uptime");
-    double uptime;
-    uptimeFile >> uptime;
+    unsigned int uptime;
+    uptimeFile >> uptime; //in seconds
 
-    seconds sUptime = duration_cast<seconds>(duration<double>(uptime));
-    std::chrono::seconds s {sUptime};
-    auto days = duration_cast<std::chrono::days>(s);
-    s -= days;
+    unsigned int days = uptime / 86400;
+    uptime %= 86400;
 
-    auto hours = duration_cast<std::chrono::hours>(s);
-    s -= hours;
+    unsigned int hours = uptime / 3600;
+    uptime %= 3600;
 
-    auto minutes = duration_cast<std::chrono::minutes>(s);
-    s -= minutes;
+    unsigned int minutes = uptime / 60;
+    uptime %= 60;
 
-    auto seconds = s;
+    unsigned int seconds = uptime;
 
-    timeData time_data = {days, hours, minutes, seconds};
-    return time_data;
+    return {days, hours, minutes, seconds};
 }

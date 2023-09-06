@@ -9,10 +9,10 @@
 //TODO do typedef (?)
 
 struct timeData {
-    std::chrono::duration<long, std::ratio<86400>> days;
-    std::chrono::duration<long, std::ratio<3600>> hours;
-    std::chrono::duration<long, std::ratio<60>> minutes;
-    std::chrono::duration<long> seconds;
+    unsigned int days;
+    unsigned int hours;
+    unsigned int minutes;
+    unsigned int seconds;
 };
 
 double getCPUUsage();
