@@ -13,5 +13,7 @@ int main() {
     std::cout << "Minutes: " << data.minutes << std::endl;
     std::cout << "Seconds: " << data.seconds << std::endl;
 
+    std::cout << "CPU Model: " << getCPUModelName() << std::endl;
+
     return 0;
 }
